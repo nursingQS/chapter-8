@@ -1,0 +1,1802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pediatric Nursing Flashcards - Chapter 8: Health Problems of the Newborn</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #fff8e1 0%, #fff3e0 100%);
+            min-height: 100vh;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            height: 96vh;
+            background: #fffef7;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(255, 160, 0, 0.15);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border: 3px solid #ffb300;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #ff8f00, #ffb300);
+            color: white;
+            padding: 12px 15px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" opacity="0.1"><path d="M50,20 Q70,30 80,50 Q70,70 50,80 Q30,70 20,50 Q30,30 50,20 Z" fill="white"/><circle cx="50" cy="50" r="15" fill="white"/><path d="M40,35 L60,35 L60,45 L40,45 Z" fill="white"/><polygon points="50,20 60,40 50,50 40,40" fill="white"/></svg>');
+            background-size: 80px 80px;
+        }
+        
+        .header h1 {
+            font-size: 1.5rem;
+            margin-bottom: 4px;
+            position: relative;
+            color: #fffde7;
+            line-height: 1.2;
+        }
+        
+        .header .subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            position: relative;
+            color: #ffecb3;
+            margin-bottom: 8px;
+        }
+        
+        .progress {
+            background: #ff8f00;
+            height: 6px;
+            width: 100%;
+            flex-shrink: 0;
+            border-radius: 0 0 5px 5px;
+        }
+        
+        .progress-bar {
+            background: linear-gradient(90deg, #ffd54f, #ffb300);
+            height: 100%;
+            width: 0%;
+            transition: width 0.4s ease;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .section-nav {
+            display: flex;
+            gap: 6px;
+            padding: 8px 10px;
+            background: linear-gradient(135deg, #ef6c00, #ff8f00);
+            border-bottom: 1px solid #ffd54f;
+            flex-shrink: 0;
+            overflow-x: auto;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .section-btn {
+            padding: 5px 10px;
+            border: 2px solid #ffd54f;
+            background: rgba(255, 255, 255, 0.95);
+            color: #ef6c00;
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            flex-shrink: 0;
+            min-width: 120px;
+            text-align: center;
+        }
+        
+        .section-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(255, 213, 79, 0.4);
+        }
+        
+        .section-btn.active {
+            background: linear-gradient(135deg, #ffd54f, #ffb300);
+            color: white;
+            border-color: #ff8f00;
+            box-shadow: 0 6px 12px rgba(255, 213, 79, 0.5);
+        }
+        
+        .flashcard {
+            padding: 12px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: #fffef7;
+            overflow: hidden;
+            min-height: 0;
+        }
+        
+        .question-container {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            margin-bottom: 8px;
+            background: white;
+            padding: 12px;
+            border-radius: 10px;
+            border-left: 6px solid #ffd54f;
+            box-shadow: 0 4px 8px rgba(255, 179, 0, 0.1);
+            flex-shrink: 0;
+        }
+        
+        .question-icon {
+            background: linear-gradient(135deg, #ff8f00, #ffd54f);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            font-weight: bold;
+            flex-shrink: 0;
+            box-shadow: 0 4px 8px rgba(255, 143, 0, 0.4);
+        }
+        
+        .question {
+            font-size: 0.9rem;
+            line-height: 1.4;
+            color: #e65100;
+            flex-grow: 1;
+            font-weight: 500;
+            overflow-wrap: break-word;
+            hyphens: auto;
+        }
+        
+        .multiple-select-indicator {
+            background: #d84315;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            margin-left: 6px;
+            white-space: nowrap;
+            box-shadow: 0 3px 6px rgba(216, 67, 21, 0.3);
+            flex-shrink: 0;
+        }
+        
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 8px;
+            flex: 1;
+            overflow: hidden;
+            min-height: 0;
+        }
+        
+        .option {
+            padding: 8px 10px;
+            border: 2px solid #ffe082;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.85rem;
+            line-height: 1.3;
+            flex-shrink: 0;
+            min-height: 45px;
+        }
+        
+        .option:hover {
+            background: #fff8e1;
+            border-color: #ffd54f;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(255, 213, 79, 0.2);
+        }
+        
+        .option-letter {
+            background: #ffe082;
+            color: #ef6c00;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+            font-size: 0.8rem;
+            border: 2px solid #ffd54f;
+        }
+        
+        /* CORRECT - ALWAYS GREEN */
+        .option.correct {
+            background: #c8e6c9;
+            border-color: #388e3c;
+            color: #1b5e20;
+        }
+        
+        .option.correct .option-letter {
+            background: #388e3c;
+            color: white;
+            border-color: #388e3c;
+        }
+        
+        /* INCORRECT - ALWAYS RED */
+        .option.incorrect {
+            background: #ffcdd2;
+            border-color: #d32f2f;
+            color: #b71c1c;
+        }
+        
+        .option.incorrect .option-letter {
+            background: #d32f2f;
+            color: white;
+            border-color: #d32f2f;
+        }
+        
+        .option.selected {
+            background: #fff8e1;
+            border-color: #ffd54f;
+            color: #ef6c00;
+        }
+        
+        .option.selected .option-letter {
+            background: #ffd54f;
+            color: white;
+            border-color: #ffb300;
+        }
+        
+        .feedback {
+            padding: 8px 10px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            display: none;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+        }
+        
+        .feedback.correct {
+            background: #c8e6c9;
+            border: 3px solid #388e3c;
+            color: #1b5e20;
+            display: flex;
+        }
+        
+        .feedback.incorrect {
+            background: #ffcdd2;
+            border: 3px solid #d32f2f;
+            color: #b71c1c;
+            display: flex;
+        }
+        
+        .feedback-icon {
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 12px;
+            background: #ffe082;
+            border-top: 2px solid #ffd54f;
+            flex-shrink: 0;
+            gap: 8px;
+        }
+        
+        .counter {
+            font-weight: bold;
+            color: #ef6c00;
+            font-size: 0.9rem;
+            background: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            border: 2px solid #ffb300;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+        }
+        
+        .btn {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #ff8f00, #ffd54f);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(255, 143, 0, 0.4);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #ffb300, #ff8f00);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(255, 179, 0, 0.4);
+        }
+        
+        .btn-warning {
+            background: linear-gradient(135deg, #ffb300, #ff8f00);
+            color: #212529;
+        }
+        
+        .btn-warning:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(255, 179, 0, 0.4);
+        }
+        
+        .btn-danger {
+            background: linear-gradient(135deg, #d84315, #bf360c);
+            color: white;
+        }
+        
+        .btn-danger:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(216, 67, 21, 0.4);
+        }
+        
+        .rationale {
+            background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+            border: 3px solid #ffb300;
+            border-radius: 10px;
+            padding: 10px;
+            margin-top: 8px;
+            display: none;
+            box-shadow: 0 4px 12px rgba(255, 179, 0, 0.2);
+            flex-shrink: 0;
+            overflow: hidden;
+            max-height: 120px;
+        }
+        
+        .rationale.show {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+        
+        .rationale h4 {
+            color: #ff8f00;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9rem;
+        }
+        
+        .rationale p {
+            color: #856404;
+            line-height: 1.4;
+            font-size: 0.8rem;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .stats {
+            display: flex;
+            gap: 6px;
+            justify-content: center;
+            margin-top: 4px;
+            flex-wrap: wrap;
+            flex-shrink: 0;
+        }
+        
+        .stat {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 8px;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            white-space: nowrap;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .cancel-selection {
+            background: linear-gradient(135deg, #d84315, #bf360c);
+            color: white;
+            margin: 0 auto 8px auto;
+            display: none;
+            box-shadow: 0 4px 10px rgba(216, 67, 21, 0.3);
+            flex-shrink: 0;
+        }
+        
+        .cancel-selection:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(216, 67, 21, 0.4);
+        }
+        
+        .cancel-selection.show {
+            display: flex;
+        }
+        
+        .multiple-select-instructions {
+            text-align: center;
+            color: #d84315;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.8rem;
+            background: #fff3cd;
+            padding: 6px;
+            border-radius: 8px;
+            border: 2px solid #ffeaa7;
+            flex-shrink: 0;
+        }
+        
+        .matching-container {
+            background: linear-gradient(135deg, #fffef7, #fff8e1);
+            border-radius: 8px;
+            padding: 10px;
+            border: 2px solid #ffe082;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            min-height: 0;
+        }
+        
+        .matching-question {
+            font-size: 0.85rem;
+            color: #e65100;
+            font-weight: 500;
+            margin-bottom: 10px;
+            padding: 8px;
+            background: white;
+            border-radius: 8px;
+            border: 2px solid #ffe082;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            max-height: 3em;
+            flex-shrink: 0;
+        }
+        
+        .matching-options {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 5px;
+            overflow: hidden;
+            padding: 2px;
+            min-height: 0;
+        }
+        
+        .matching-option {
+            padding: 8px;
+            border: 2px dashed #ffd54f;
+            border-radius: 6px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #ffb300;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 40px;
+            overflow: hidden;
+            line-height: 1.2;
+        }
+        
+        .matching-option:hover {
+            background: #fff8e1;
+            border-style: solid;
+            border-color: #ffb300;
+        }
+        
+        .matching-option.correct {
+            background: linear-gradient(135deg, #c8e6c9, #a5d6a7);
+            border-color: #388e3c;
+            border-style: solid;
+            color: #1b5e20;
+        }
+        
+        .matching-option.incorrect {
+            background: linear-gradient(135deg, #ffcdd2, #ef9a9a);
+            border-color: #d32f2f;
+            border-style: solid;
+            color: #b71c1c;
+        }
+        
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
+        }
+        
+        /* Remove all scrollbars */
+        .options,
+        .matching-options,
+        .rationale,
+        .container,
+        .flashcard,
+        body {
+            overflow: hidden !important;
+            -ms-overflow-style: none !important;
+            scrollbar-width: none !important;
+        }
+        
+        .options::-webkit-scrollbar,
+        .matching-options::-webkit-scrollbar,
+        .rationale::-webkit-scrollbar {
+            display: none !important;
+            width: 0 !important;
+            height: 0 !important;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                height: 98vh;
+            }
+            
+            .section-btn {
+                min-width: 100px;
+                font-size: 0.7rem;
+                padding: 4px 8px;
+            }
+            
+            .matching-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .header {
+                padding: 10px 12px;
+            }
+            
+            .header h1 {
+                font-size: 1.2rem;
+            }
+            
+            .navigation {
+                padding: 8px 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 6px;
+            }
+            
+            .counter {
+                order: -1;
+                width: 100%;
+                text-align: center;
+                margin-bottom: 4px;
+                font-size: 0.8rem;
+            }
+            
+            .btn {
+                padding: 6px 10px;
+                font-size: 0.75rem;
+            }
+            
+            .question {
+                font-size: 0.85rem;
+            }
+            
+            .option {
+                font-size: 0.8rem;
+                padding: 6px 8px;
+                min-height: 40px;
+            }
+            
+            .question-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 0.9rem;
+            }
+            
+            .option-letter {
+                width: 22px;
+                height: 22px;
+                font-size: 0.75rem;
+            }
+        }
+        
+        @media (max-height: 700px) {
+            .container {
+                height: 99vh;
+            }
+            
+            .header {
+                padding: 8px 10px;
+            }
+            
+            .header h1 {
+                font-size: 1.1rem;
+            }
+            
+            .header .subtitle {
+                font-size: 0.8rem;
+            }
+            
+            .question-container {
+                padding: 10px;
+                margin-bottom: 6px;
+            }
+            
+            .question {
+                font-size: 0.8rem;
+                line-height: 1.3;
+            }
+            
+            .option {
+                padding: 6px 8px;
+                min-height: 35px;
+                font-size: 0.75rem;
+            }
+            
+            .navigation {
+                padding: 6px 8px;
+            }
+            
+            .rationale {
+                max-height: 80px;
+                padding: 8px;
+            }
+            
+            .feedback {
+                padding: 6px 8px;
+                font-size: 0.75rem;
+            }
+            
+            .option-letter {
+                width: 20px;
+                height: 20px;
+                font-size: 0.7rem;
+            }
+            
+            .stats {
+                display: none;
+            }
+        }
+        
+        @media (max-height: 600px) {
+            .question-container {
+                padding: 8px;
+            }
+            
+            .question-icon {
+                width: 30px;
+                height: 30px;
+                font-size: 0.8rem;
+            }
+            
+            .option {
+                min-height: 30px;
+                padding: 4px 6px;
+                font-size: 0.7rem;
+            }
+            
+            .option-letter {
+                width: 18px;
+                height: 18px;
+                font-size: 0.65rem;
+            }
+            
+            .btn {
+                padding: 5px 8px;
+                font-size: 0.7rem;
+            }
+            
+            .rationale {
+                max-height: 60px;
+                padding: 6px;
+            }
+            
+            .rationale p {
+                font-size: 0.7rem;
+                line-height: 1.3;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🩺 Chapter 08: Health Problems of the Newborn</h1>
+            <div class="subtitle">Newborn Health Issues Theme - Amber & Gold Colors (Jaundice Focus)</div>
+            <div class="stats">
+                <div class="stat">📚 35 Questions</div>
+                <div class="stat">🎯 Immediate Feedback</div>
+                <div class="stat">🩹 Birth Injuries</div>
+                <div class="stat">🟡 Jaundice Focus</div>
+            </div>
+        </div>
+        <div class="progress">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        
+        <div class="section-nav">
+            <button class="section-btn active" onclick="setSection('multiple-choice')">Multiple Choice (26)</button>
+            <button class="section-btn" onclick="setSection('multiple-response')">Multiple Response (7)</button>
+            <button class="section-btn" onclick="setSection('matching')">Matching (2)</button>
+            <button class="section-btn" onclick="setSection('all')">All Mixed (35)</button>
+        </div>
+        
+        <div class="flashcard">
+            <div class="question-container">
+                <div class="question-icon" id="questionNumber">1</div>
+                <div class="question" id="question"></div>
+                <div class="multiple-select-indicator" id="multipleSelectIndicator" style="display: none;">Multiple Answers</div>
+            </div>
+            
+            <div class="multiple-select-instructions" id="multipleSelectInstructions" style="display: none;">
+                💡 Select ALL correct answers
+            </div>
+            
+            <div class="options" id="options"></div>
+            
+            <div class="matching-container" id="matchingContainer" style="display: none;">
+                <div class="matching-question" id="matchingQuestion"></div>
+                <div class="matching-options" id="matchingOptions"></div>
+            </div>
+            
+            <button class="btn cancel-selection" id="cancelBtn" onclick="cancelSelection()">
+                🔄 Reset
+            </button>
+            
+            <div class="feedback" id="feedback">
+                <div class="feedback-icon" id="feedbackIcon"></div>
+                <div id="feedbackText"></div>
+            </div>
+            <div class="rationale" id="rationale">
+                <h4>💡 Rationale:</h4>
+                <p id="rationaleText"></p>
+            </div>
+        </div>
+        
+        <div class="navigation">
+            <button class="btn btn-secondary" id="prevBtn" onclick="previousCard()">
+                ⬅️ Prev
+            </button>
+            <div class="counter" id="counter">1/26</div>
+            <button class="btn btn-warning" id="submitBtn" onclick="submitAnswer()" style="display: none;">
+                ✅ Submit
+            </button>
+            <button class="btn btn-primary" id="nextBtn" onclick="nextCard()">
+                Next ➡️
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Chapter 8 Data - Health Problems of the Newborn
+        const sections = {
+            'multiple-choice': [
+                {
+                    question: "Which term is defined as a vaguely outlined area of edematous tissue situated over the portion of the scalp that presents in a vertex delivery?",
+                    options: [
+                        "Hydrocephalus",
+                        "Cephalhematoma",
+                        "Caput succedaneum",
+                        "Subdural hematoma"
+                    ],
+                    correct: 2,
+                    rationale: "Caput succedaneum is defined as a vaguely outlined area of edematous tissue situated over the portion of the scalp that presents in a vertex delivery. The swelling consists of serum or blood (or both) accumulated in the tissues above the bone, and it may extend beyond the bone margin."
+                },
+                {
+                    question: "Which finding on a newborn assessment should the nurse recognize as suggestive of a clavicle fracture?",
+                    options: [
+                        "Positive scarf sign",
+                        "Asymmetric Moro reflex",
+                        "Swelling of fingers on affected side",
+                        "Paralysis of affected extremity and muscles"
+                    ],
+                    correct: 1,
+                    rationale: "A newborn with a broken clavicle may have no signs. The Moro reflex, which results in sudden extension and abduction of the extremities followed by flexion and adduction of the extremities, will most likely be asymmetric."
+                },
+                {
+                    question: "The parents of a newborn ask the nurse what caused the baby's facial nerve paralysis. The nurse's response is based on remembering that this is caused by what?",
+                    options: [
+                        "Birth injury",
+                        "Genetic defect",
+                        "Spinal cord injury",
+                        "Inborn error of metabolism"
+                    ],
+                    correct: 0,
+                    rationale: "Pressure on the facial nerve (cranial nerve VII) during delivery may result in injury to the nerve. The paralysis usually disappears in a few days but may take as long as several months."
+                },
+                {
+                    question: "A mother is upset because her newborn has erythema toxicum neonatorum. The nurse should reassure her that this is what?",
+                    options: [
+                        "Easily treated",
+                        "Benign and transient",
+                        "Usually not contagious",
+                        "Usually not disfiguring"
+                    ],
+                    correct: 1,
+                    rationale: "Erythema toxicum neonatorum, or newborn rash, is a benign, self-limiting eruption of unknown cause that usually appears within the first 2 days of life. The rash usually lasts about 5 to 7 days."
+                },
+                {
+                    question: "What should nursing care of an infant with oral candidiasis (thrush) include?",
+                    options: [
+                        "Avoid use of a pacifier.",
+                        "Continue medication for the prescribed number of days.",
+                        "Remove the characteristic white patches with a soft cloth.",
+                        "Apply medication to the oral mucosa, being careful that none is ingested."
+                    ],
+                    correct: 1,
+                    rationale: "The medication must be continued for the prescribed number of days. To prevent relapse, therapy should continue for at least 2 days after the lesions disappear."
+                },
+                {
+                    question: "A mother brings her 6-week-old infant in with complaints of poor feeding, lethargy, fever, irritability, and a vesicular rash. What does the nurse suspect?",
+                    options: [
+                        "Impetigo",
+                        "Candidiasis",
+                        "Neonatal herpes",
+                        "Congenital syphilis"
+                    ],
+                    correct: 2,
+                    rationale: "Neonatal herpes is one of the most serious viral infections in newborns, with a mortality rate of up to 60% in infants with disseminated disease."
+                },
+                {
+                    question: "Which is a bright red, rubbery nodule with a rough surface and a well-defined margin that may be present at birth?",
+                    options: [
+                        "Port-wine stain",
+                        "Juvenile melanoma",
+                        "Cavernous hemangioma",
+                        "Strawberry hemangioma"
+                    ],
+                    correct: 3,
+                    rationale: "Strawberry hemangiomas (or capillary hemangiomas) are benign cutaneous tumors that involve only capillaries. They are bright red, rubbery nodules with rough surfaces and well-defined margins."
+                },
+                {
+                    question: "What is an infant with severe jaundice at risk for developing?",
+                    options: [
+                        "Encephalopathy",
+                        "Bullous impetigo",
+                        "Respiratory distress",
+                        "Blood incompatibility"
+                    ],
+                    correct: 0,
+                    rationale: "Unconjugated bilirubin, which can cross the blood-brain barrier, is highly toxic to neurons. An infant with severe jaundice is at risk for developing kernicterus or bilirubin encephalopathy."
+                },
+                {
+                    question: "When should the nurse expect breastfeeding-associated jaundice to first appear in a normal infant?",
+                    options: [
+                        "2 to 12 hours",
+                        "12 to 24 hours",
+                        "2 to 4 days",
+                        "After the fifth day"
+                    ],
+                    correct: 2,
+                    rationale: "Breastfeeding-associated jaundice is caused by decreased milk intake related to decreased caloric and fluid intake by the infant before the mother's milk is well established."
+                },
+                {
+                    question: "Which intervention may decrease the incidence of physiologic jaundice in a healthy full-term infant?",
+                    options: [
+                        "Institute early and frequent feedings.",
+                        "Bathe newborn when the axillary temperature is 36.3° C (97.5° F).",
+                        "Place the newborn's crib near a window for exposure to sunlight.",
+                        "Suggest that the mother initiate breastfeeding when the danger of jaundice has passed."
+                    ],
+                    correct: 0,
+                    rationale: "Physiologic jaundice is caused by the immature hepatic function of the newborn's liver coupled with the increased load from red blood cell hemolysis. Feeding stimulates peristalsis and produces more rapid passage of meconium."
+                },
+                {
+                    question: "What is an important nursing intervention for a full-term infant receiving phototherapy?",
+                    options: [
+                        "Observing for signs of dehydration",
+                        "Using sunscreen to protect the infant's skin",
+                        "Keeping the infant diapered to collect frequent stools",
+                        "Informing the mother why breastfeeding must be discontinued"
+                    ],
+                    correct: 0,
+                    rationale: "Dehydration is a potential risk of phototherapy. The nurse monitors hydration status to be alert for the need for more frequent feedings and supplemental fluid administration."
+                },
+                {
+                    question: "Rh hemolytic disease is suspected in a mother's second baby, a son. Which factor is important in understanding how this could develop?",
+                    options: [
+                        "The first child was a girl.",
+                        "The first child was Rh positive.",
+                        "Both parents have type O blood.",
+                        "She was not immunized against hemolysis."
+                    ],
+                    correct: 1,
+                    rationale: "Hemolytic disease of the newborn results from an abnormally rapid rate of red blood cell (RBC) destruction. The major causes of this are maternal-fetal Rh and ABO incompatibility."
+                },
+                {
+                    question: "When should the nurse expect jaundice to be present in a full-term infant with hemolytic disease?",
+                    options: [
+                        "At birth",
+                        "Within 24 hours after birth",
+                        "25 to 48 hours after birth",
+                        "49 to 72 hours after birth"
+                    ],
+                    correct: 1,
+                    rationale: "In hemolytic disease of the infant, jaundice is usually evident within the first 24 hours of life."
+                },
+                {
+                    question: "A woman who is Rh-negative is pregnant with her first child, and her husband is Rh positive. During her 12-week prenatal visit, she tells the nurse that she has been told that this is dangerous. What should the nurse tell her?",
+                    options: [
+                        "That no treatment is necessary",
+                        "That an exchange transfusion will be necessary at birth",
+                        "That no treatment is available until the infant is born",
+                        "That administration of Rh immunoglobulin is indicated at 26 to 28 weeks of gestation"
+                    ],
+                    correct: 3,
+                    rationale: "The goal is to prevent isoimmunization. If the mother has not been previously exposed to the Rh-negative antigen, Rh immunoglobulin (RhIg) is administered at 26 to 28 weeks of gestation and again within 72 hours of birth."
+                },
+                {
+                    question: "The nurse is planning care for an infant receiving calcium gluconate for treatment of hypocalcemia. Which route of administration should be used?",
+                    options: [
+                        "Oral",
+                        "Intramuscular",
+                        "Intravenous",
+                        "Intraosseous"
+                    ],
+                    correct: 2,
+                    rationale: "Calcium gluconate is administered intravenously over 10 to 30 minutes or as a continuous infusion. If it is given more rapidly than this, cardiac dysrhythmias and circulatory collapse may occur."
+                },
+                {
+                    question: "The nurse is caring for an infant who will be discharged on home phototherapy. What instructions should the nurse include in the discharge teaching to the parents?",
+                    options: [
+                        "Apply an oil-based lotion to the infant's skin two times per day to prevent the skin from drying out under the phototherapy light.",
+                        "Keep the eye shields on the infant's eyes even when the phototherapy light is turned off.",
+                        "Take the infant's temperature every 2 hours while the newborn is under the phototherapy light.",
+                        "Make a follow-up visit with the health care provider within 2 or 3 days after your infant has been on phototherapy."
+                    ],
+                    correct: 3,
+                    rationale: "With short hospital stays, infants may be discharged with a prescription for home phototherapy. It is important to include information about the need for a follow-up visit with the health care provider in 2 or 3 days."
+                },
+                {
+                    question: "The nurse is caring for a breastfed full-term infant who was born after an uneventful pregnancy and delivery. The infant's blood glucose level is 36 mg/dL. Which action should the nurse implement?",
+                    options: [
+                        "Bring the infant to the mother and initiate breastfeeding.",
+                        "Place a nasogastric tube and administer 5% dextrose water.",
+                        "Start a peripheral intravenous line and administer 10% dextrose.",
+                        "Monitor the infant in the nursery and obtain a blood glucose level in 4 hours."
+                    ],
+                    correct: 0,
+                    rationale: "A full-term infant born after an uncomplicated pregnancy and delivery who is borderline hypoglycemic, as indicated by a blood glucose level of 36 mg/dL, and who is clinically asymptomatic should probably reestablish normoglycemia with early institution of breast or bottle feeding."
+                },
+                {
+                    question: "A pregnant client asks the nurse to explain the meaning of 'cephalopelvic disproportion.' Which explanation should the nurse give to the client?",
+                    options: [
+                        "It means a large for gestational age fetus.",
+                        "It is the narrow opening between the ischial spines.",
+                        "There is an uneven size between the fetus presenting part and the pelvis.",
+                        "The shape of the pelvis is an android shape and is unfavorable for vaginal delivery."
+                    ],
+                    correct: 2,
+                    rationale: "Cephalopelvic disproportion means a disproportion (or uneven size) between the fetus presenting part and the maternal pelvis."
+                },
+                {
+                    question: "The nurse is caring for a newborn with Erb palsy. The nurse understands that which reflex is absent with this condition?",
+                    options: [
+                        "Root reflex",
+                        "Suck reflex",
+                        "Grasp reflex",
+                        "Moro reflex"
+                    ],
+                    correct: 3,
+                    rationale: "Erb palsy (Erb-Duchenne paralysis) is caused by damage to the upper plexus and usually results from stretching or pulling away of the shoulder from the head. The Moro reflex is absent in a newborn with Erb palsy."
+                },
+                {
+                    question: "A newborn has been diagnosed with brachial nerve paralysis. The nurse should assist the breastfeeding mother to use which hold or position during feeding?",
+                    options: [
+                        "Reclining",
+                        "The cradle hold",
+                        "The football hold",
+                        "The cross-over hold"
+                    ],
+                    correct: 2,
+                    rationale: "In brachial nerve paralysis, the affected arm is gently immobilized on the upper abdomen. Tucking the newborn under the arm (football hold) puts less pressure on the newborn's affected extremity."
+                },
+                {
+                    question: "The parents of an infant with a cleft palate ask the nurse, 'What follow-up care will our infant need after the repair?' Which is an accurate response by the nurse?",
+                    options: [
+                        "'Your infant will not need any subsequent follow-up care.'",
+                        "'Your infant will only need to be evaluated by an audiologist.'",
+                        "'Your infant will only need follow-up with a speech pathologist.'",
+                        "'Your infant will need follow-up with audiologists and orthodontists.'"
+                    ],
+                    correct: 3,
+                    rationale: "A cleft palate means that audiologists will evaluate the child's hearing throughout early childhood and work closely with otolaryngologists to determine if pressure-equalizing (PE) tubes are needed. An infant with a cleft palate will also go through multiple phases of orthodontic intervention."
+                },
+                {
+                    question: "The nurse is caring for a child after a cleft palate repair who is on a clear liquid diet. Which feeding device should the nurse use to deliver the clear liquid diet?",
+                    options: [
+                        "Straw",
+                        "Spoon",
+                        "Sippy cup",
+                        "Open cup"
+                    ],
+                    correct: 3,
+                    rationale: "Acceptable feeding devices after a cleft palate repair include open cup for liquids, but rigid utensils such as spoons, straws, and hard-tipped sippy cups should be avoided to prevent accidental injury to the repair."
+                },
+                {
+                    question: "A mother has just given birth to a newborn with a cleft lip. Sensing that something is wrong, she starts to cry and asks the nurse, 'What is wrong with my baby?' What is the most appropriate nursing action?",
+                    options: [
+                        "Encourage the mother to express her feelings.",
+                        "Explain in simple language that the baby has a cleft lip.",
+                        "Provide emotional support until the practitioner can talk to the mother.",
+                        "Tell the mother a pediatrician will talk to her as soon as the baby is examined."
+                    ],
+                    correct: 1,
+                    rationale: "It is best to explain in simple terms the nature of the defect and to reinforce and help clarify information given by the practitioner before the newborn is shown to the parents."
+                },
+                {
+                    question: "An infant requires surgery for repair of a cleft lip. An important priority of the preoperative nursing care is which?",
+                    options: [
+                        "Initiating discharge teaching",
+                        "Performing baseline physical and behavioral assessment",
+                        "Observing for allergic reactions to preoperative antibiotics",
+                        "Determining whether this defect exists in other family members"
+                    ],
+                    correct: 1,
+                    rationale: "It is essential to assess the infant before surgery to obtain a baseline. Postoperative changes can be identified and a determination can be made regarding pain or change in status."
+                },
+                {
+                    question: "The nurse is caring for an infant with hemolytic disease. Which medication should the nurse anticipate to be prescribed to decrease the bilirubin level?",
+                    options: [
+                        "Phenytoin (Dilantin)",
+                        "Valproic acid (Depakene)",
+                        "Carbamazepine (Tegretol)",
+                        "Phenobarbital (Phenobarbital)"
+                    ],
+                    correct: 3,
+                    rationale: "Phenobarbital is used to decrease the bilirubin level in a newborn with hemolytic disease. Phenobarbital promotes hepatic glucuronyl transferase synthesis, which increases bilirubin conjugation and hepatic clearance of the pigment in bile."
+                },
+                {
+                    question: "A 4-month-old infant is discharged home after surgery for the repair of a cleft lip. What should instructions to the parents include?",
+                    options: [
+                        "Provide crib toys for distraction.",
+                        "Breast- or bottle-feeding can begin immediately.",
+                        "Give pain medication to the infant to minimize crying.",
+                        "Leave the infant in the crib at all times to prevent suture strain."
+                    ],
+                    correct: 2,
+                    rationale: "Pain medication and comfort measures are used to minimize infant crying. Interventions are implemented to minimize stress on the suture line."
+                }
+            ],
+            
+            'multiple-response': [
+                {
+                    question: "The nurse is teaching a new nurse about types of physical injuries that can occur at birth. Which soft tissue injuries should the nurse include in the teaching? (Select all that apply.)",
+                    options: [
+                        "Petechiae",
+                        "Retinal hemorrhage",
+                        "Facial paralysis",
+                        "Cephalhematoma",
+                        "Subdural hematoma",
+                        "Subconjunctival hemorrhage"
+                    ],
+                    correct: [0, 1, 5],
+                    rationale: "Soft tissue injuries that can occur at birth include petechiae, retinal hemorrhage, and subconjunctival hemorrhage. Facial paralysis and cephalhematoma are head injuries that occur at birth, and a subdural hematoma is considered a neurologic injury related to the birthing process."
+                },
+                {
+                    question: "Which interventions should the nurse implement for a newborn with a subgaleal hemorrhage? (Select all that apply.)",
+                    options: [
+                        "Monitor bilirubin levels.",
+                        "Monitor hematocrit levels.",
+                        "Prepare the newborn for skull radiography.",
+                        "Monitor the newborn's level of consciousness.",
+                        "Place a warm compress on the affected area."
+                    ],
+                    correct: [0, 1, 3],
+                    rationale: "An increase in serum bilirubin levels may occur as a result of the degrading red blood cells within the hematoma. Monitoring the newborn for changes in level of consciousness and a decrease in the hematocrit are keys to early recognition and management."
+                },
+                {
+                    question: "Which birth injuries should the nurse assess for if an infant was born with the use of a vacuum extractor? (Select all that apply.)",
+                    options: [
+                        "Torticollis",
+                        "Brachial palsy",
+                        "Fractured clavicle",
+                        "Cephalhematoma",
+                        "Subgaleal hemorrhage"
+                    ],
+                    correct: [1, 3, 4],
+                    rationale: "Brachial palsy, cephalhematoma, and subgaleal hemorrhage are birth injuries associated with vacuum-assisted extraction."
+                },
+                {
+                    question: "An infant with an isolated cleft lip is being bottle fed. Which actions should the nurse plan to implement to assist with the feeding? (Select all that apply.)",
+                    options: [
+                        "Use an NUK nipple.",
+                        "Use cheek support.",
+                        "Enlarge the nipple opening.",
+                        "Position the infant upright.",
+                        "Thicken the formula with rice cereal."
+                    ],
+                    correct: [0, 1, 3],
+                    rationale: "A bottle-fed infant with an isolated cleft lip should be fed with cheek support, systems that have a wider base such as an NUK nipple, and the infant should be positioned upright with the head supported."
+                },
+                {
+                    question: "The nurse suspects a newborn has a fractured clavicle. What are signs of a fractured clavicle? (Select all that apply.)",
+                    options: [
+                        "An asymmetric Moro reflex",
+                        "Limited use of the affected arm",
+                        "Crying when the arm is moved",
+                        "Muscles of the hand are paralyzed",
+                        "The arm hangs limp alongside the body"
+                    ],
+                    correct: [0, 1, 2],
+                    rationale: "A newborn with a fractured clavicle may have no signs, but the nurse should suspect a fracture if an infant has limited use of the affected arm, malpositioning of the arm, an asymmetric Moro reflex, or focal swelling or tenderness or cries when the arm is moved."
+                },
+                {
+                    question: "The nurse is preparing to administer a topical application of 1 ml of nystatin (Mycostatin) to an infant with oral thrush. Which actions should the nurse plan to implement? (Select all that apply.)",
+                    options: [
+                        "Administer after a feeding.",
+                        "Use a sponge applicator to swab the oral mucosa and tongue.",
+                        "Administer after warming the medication under running warm water.",
+                        "If white patches are no longer present, hold the medication.",
+                        "Deposit the remainder of the dose in the mouth with a syringe so the infant swallows a small amount."
+                    ],
+                    correct: [0, 1, 4],
+                    rationale: "To administer a topical application of nystatin for oral thrush, the medication should be distributed over the surface of the oral mucosa and tongue with an applicator or syringe. The remainder of the dose is deposited in the mouth to be swallowed by the infant to treat any gastrointestinal lesions."
+                },
+                {
+                    question: "The nursery nurse is aware that which are risk factors for hyperbilirubinemia? (Select all that apply.)",
+                    options: [
+                        "An infant born prematurely",
+                        "An infant born to a mother with diabetes",
+                        "An infant born to a white mother",
+                        "An infant fed exclusively with formula",
+                        "An infant born with a metabolic disease"
+                    ],
+                    correct: [0, 1, 4],
+                    rationale: "Prematurity increases the risk of hyperbilirubinemia. An infant born to a mother with diabetes is also at risk for hyperbilirubinemia. Infants with metabolic disorders such as galactosemia or hypothyroidism may also develop hyperbilirubinemia."
+                }
+            ],
+            
+            'matching': [
+                {
+                    question: "Craniosynostosis resulting in a prominent forehead is most characteristic of:",
+                    options: [
+                        "Crouzon syndrome",
+                        "Apert syndrome",
+                        "Treacher Collins syndrome",
+                        "Pierre Robin sequence"
+                    ],
+                    correct: 1,
+                    rationale: "Apert syndrome is characterized by craniosynostosis resulting in a prominent forehead, along with syndactyly (fusion of fingers and toes)."
+                },
+                {
+                    question: "Shallow orbits and underdevelopment of the middle third of the face are most characteristic of:",
+                    options: [
+                        "Crouzon syndrome",
+                        "Apert syndrome",
+                        "Treacher Collins syndrome",
+                        "Pierre Robin sequence"
+                    ],
+                    correct: 0,
+                    rationale: "Crouzon syndrome is characterized by shallow orbits and underdevelopment of the middle third of the face, along with craniosynostosis."
+                }
+            ],
+            
+            'all': []
+        };
+
+        // Combine all questions for the 'all' section
+        sections['all'] = [
+            ...sections['multiple-choice'].map(q => ({...q, section: 'multiple-choice'})),
+            ...sections['multiple-response'].map(q => ({...q, section: 'multiple-response'})),
+            ...sections['matching'].map(q => ({...q, section: 'matching', isMatching: true}))
+        ];
+
+        let currentSection = 'multiple-choice';
+        let currentQuestion = 0;
+        let selectedOption = null;
+        let selectedOptions = [];
+        let isSubmitted = false;
+        let answers = {
+            'multiple-choice': Array(sections['multiple-choice'].length).fill(null),
+            'multiple-response': Array(sections['multiple-response'].length).fill({selected: [], submitted: false}),
+            'matching': Array(sections['matching'].length).fill(null),
+            'all': Array(sections['all'].length).fill(null)
+        };
+
+        function setSection(section) {
+            currentSection = section;
+            currentQuestion = 0;
+            selectedOption = null;
+            selectedOptions = [];
+            isSubmitted = false;
+            
+            document.querySelectorAll('.section-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            loadQuestion();
+        }
+
+        function isMultipleResponseQuestion() {
+            if (currentSection === 'all') {
+                const questionData = getCurrentQuestionData();
+                return questionData?.section === 'multiple-response' || Array.isArray(questionData?.correct);
+            }
+            return currentSection === 'multiple-response';
+        }
+
+        function isMatchingSection() {
+            if (currentSection === 'all') {
+                const questionData = getCurrentQuestionData();
+                return questionData?.isMatching || questionData?.section === 'matching';
+            }
+            return currentSection === 'matching';
+        }
+
+        function getCurrentQuestionData() {
+            if (currentSection === 'all') {
+                return sections['all'][currentQuestion] || null;
+            } else {
+                return sections[currentSection][currentQuestion];
+            }
+        }
+
+        function loadQuestion() {
+            const questionData = getCurrentQuestionData();
+            
+            if (!questionData) return;
+            
+            const isMatching = isMatchingSection();
+            const isMultipleResponse = isMultipleResponseQuestion();
+            
+            // Update UI elements visibility
+            document.getElementById('matchingContainer').style.display = isMatching ? 'flex' : 'none';
+            document.getElementById('options').style.display = isMatching ? 'none' : 'flex';
+            document.getElementById('multipleSelectIndicator').style.display = isMultipleResponse ? 'block' : 'none';
+            document.getElementById('multipleSelectInstructions').style.display = isMultipleResponse ? 'block' : 'none';
+            document.getElementById('cancelBtn').classList.remove('show');
+            document.getElementById('submitBtn').style.display = isMultipleResponse ? 'flex' : 'none';
+            document.getElementById('questionNumber').textContent = currentQuestion + 1;
+            
+            let totalQuestions = getTotalQuestions();
+            
+            const progress = ((currentQuestion + 1) / totalQuestions) * 100;
+            document.getElementById('progressBar').style.width = `${progress}%`;
+            document.getElementById('counter').textContent = `${currentQuestion + 1}/${totalQuestions}`;
+            
+            if (isMatching) {
+                document.getElementById('matchingQuestion').textContent = questionData.question;
+                loadMatchingOptions(questionData);
+            } else {
+                document.getElementById('question').textContent = questionData.question;
+                loadOptions(questionData);
+            }
+            
+            document.getElementById('feedback').style.display = 'none';
+            document.getElementById('rationale').classList.remove('show');
+            
+            document.getElementById('prevBtn').disabled = currentQuestion === 0;
+            const isLastQuestion = currentQuestion >= totalQuestions - 1;
+            document.getElementById('nextBtn').textContent = isLastQuestion ? 'Finish ➡️' : 'Next ➡️';
+            document.getElementById('nextBtn').disabled = true;
+            
+            // Load saved answer state
+            const storedAnswer = answers[currentSection][currentQuestion];
+            if (storedAnswer !== null && storedAnswer !== undefined) {
+                if (isMultipleResponse) {
+                    selectedOptions = storedAnswer.selected || [];
+                    isSubmitted = storedAnswer.submitted || false;
+                    
+                    if (isSubmitted) {
+                        showFeedbackForMultipleResponse(questionData);
+                        document.getElementById('nextBtn').disabled = false;
+                        document.getElementById('submitBtn').disabled = true;
+                    } else {
+                        highlightSelectedOptionsForMultipleResponse();
+                        document.getElementById('submitBtn').disabled = selectedOptions.length === 0;
+                        document.getElementById('nextBtn').disabled = false;
+                        if (selectedOptions.length > 0) {
+                            document.getElementById('cancelBtn').classList.add('show');
+                        }
+                    }
+                } else if (isMatching) {
+                    selectedOption = storedAnswer;
+                    highlightMatchingOption(storedAnswer, questionData);
+                    showFeedback(storedAnswer, questionData);
+                    document.getElementById('nextBtn').disabled = false;
+                    document.getElementById('cancelBtn').classList.add('show');
+                } else {
+                    selectedOption = storedAnswer;
+                    highlightSelectedOption(storedAnswer, questionData);
+                    showFeedback(storedAnswer, questionData);
+                    document.getElementById('nextBtn').disabled = false;
+                    document.getElementById('cancelBtn').classList.add('show');
+                }
+            } else {
+                selectedOption = null;
+                selectedOptions = [];
+                isSubmitted = false;
+                if (isMultipleResponse) {
+                    document.getElementById('submitBtn').disabled = true;
+                }
+            }
+        }
+
+        function loadMatchingOptions(questionData) {
+            const matchingOptions = document.getElementById('matchingOptions');
+            matchingOptions.innerHTML = '';
+            
+            if (questionData.options) {
+                questionData.options.forEach((option, index) => {
+                    const optionDiv = document.createElement('div');
+                    optionDiv.className = 'matching-option';
+                    optionDiv.textContent = `${String.fromCharCode(65 + index)}) ${option}`;
+                    optionDiv.onclick = () => selectMatchingOption(index, questionData);
+                    matchingOptions.appendChild(optionDiv);
+                });
+                
+                const storedAnswer = answers[currentSection][currentQuestion];
+                if (storedAnswer !== null && storedAnswer !== undefined) {
+                    highlightMatchingOption(storedAnswer, questionData);
+                }
+            }
+        }
+
+        function loadOptions(questionData) {
+            const optionsContainer = document.getElementById('options');
+            optionsContainer.innerHTML = '';
+            
+            if (questionData.options && questionData.options.length > 0) {
+                questionData.options.forEach((option, index) => {
+                    const optionElement = document.createElement('div');
+                    optionElement.className = 'option';
+                    optionElement.innerHTML = `
+                        <div class="option-letter">${String.fromCharCode(65 + index)}</div>
+                        <div class="option-text">${option}</div>
+                    `;
+                    optionElement.onclick = () => selectOption(index, questionData);
+                    optionsContainer.appendChild(optionElement);
+                });
+            } else {
+                const optionElement = document.createElement('div');
+                optionElement.className = 'option';
+                optionElement.innerHTML = `
+                    <div class="option-letter">A</div>
+                    <div class="option-text">No options available for this question</div>
+                `;
+                optionsContainer.appendChild(optionElement);
+            }
+        }
+
+        function selectOption(index, questionData) {
+            if (!questionData) questionData = getCurrentQuestionData();
+            
+            if (isMultipleResponseQuestion()) {
+                handleMultipleResponseSelect(index, questionData);
+            } else {
+                handleSingleSelect(index, questionData);
+            }
+        }
+
+        function handleSingleSelect(index, questionData) {
+            if (!questionData) questionData = getCurrentQuestionData();
+            
+            answers[currentSection][currentQuestion] = index;
+            selectedOption = index;
+            
+            highlightSelectedOption(index, questionData);
+            showFeedback(index, questionData);
+            document.getElementById('nextBtn').disabled = false;
+            document.getElementById('cancelBtn').classList.add('show');
+        }
+
+        function handleMultipleResponseSelect(index, questionData) {
+            if (!questionData) questionData = getCurrentQuestionData();
+            if (isSubmitted) return;
+            
+            const optionIndex = selectedOptions.indexOf(index);
+            if (optionIndex === -1) {
+                selectedOptions.push(index);
+            } else {
+                selectedOptions.splice(optionIndex, 1);
+            }
+            
+            const options = document.querySelectorAll('.option');
+            options.forEach((option, i) => {
+                option.classList.remove('selected', 'correct', 'incorrect');
+                if (selectedOptions.includes(i)) {
+                    option.classList.add('selected');
+                }
+            });
+            
+            if (!answers[currentSection][currentQuestion]) {
+                answers[currentSection][currentQuestion] = {selected: [], submitted: false};
+            }
+            answers[currentSection][currentQuestion].selected = selectedOptions;
+            answers[currentSection][currentQuestion].submitted = false;
+            
+            document.getElementById('submitBtn').disabled = selectedOptions.length === 0;
+            document.getElementById('nextBtn').disabled = false;
+            document.getElementById('cancelBtn').classList.toggle('show', selectedOptions.length > 0);
+        }
+
+        function selectMatchingOption(index, questionData) {
+            if (!questionData) questionData = getCurrentQuestionData();
+            
+            answers[currentSection][currentQuestion] = index;
+            selectedOption = index;
+            
+            document.querySelectorAll('.matching-option').forEach(option => {
+                option.classList.remove('selected', 'correct', 'incorrect');
+            });
+            
+            const selectedOptionElement = document.querySelectorAll('.matching-option')[index];
+            selectedOptionElement.classList.add('selected');
+            
+            if (index === questionData.correct) {
+                selectedOptionElement.classList.add('correct');
+            } else {
+                selectedOptionElement.classList.add('incorrect');
+                document.querySelectorAll('.matching-option')[questionData.correct].classList.add('correct');
+            }
+            
+            showFeedback(index, questionData);
+            document.getElementById('nextBtn').disabled = false;
+            document.getElementById('cancelBtn').classList.add('show');
+        }
+
+        function highlightMatchingOption(index, questionData) {
+            if (!questionData) questionData = getCurrentQuestionData();
+            
+            const options = document.querySelectorAll('.matching-option');
+            
+            options.forEach((option, i) => {
+                option.classList.remove('selected', 'correct', 'incorrect');
+                if (i === index) {
+                    option.classList.add('selected');
+                    if (i === questionData.correct) {
+                        option.classList.add('correct');
+                    } else {
+                        option.classList.add('incorrect');
+                        options[questionData.correct].classList.add('correct');
+                    }
+                }
+            });
+        }
+
+        function highlightSelectedOption(index, questionData) {
+            if (!questionData) questionData = getCurrentQuestionData();
+            
+            const options = document.querySelectorAll('.option');
+            
+            options.forEach((option, i) => {
+                option.classList.remove('selected', 'correct', 'incorrect');
+                
+                if (i === index) {
+                    if (i === questionData.correct) {
+                        option.classList.add('correct');
+                    } else {
+                        option.classList.add('incorrect');
+                        if (questionData.correct !== undefined) {
+                            options[questionData.correct].classList.add('correct');
+                        }
+                    }
+                }
+            });
+        }
+
+        function highlightSelectedOptionsForMultipleResponse() {
+            const options = document.querySelectorAll('.option');
+            
+            options.forEach((option, i) => {
+                option.classList.remove('selected', 'correct', 'incorrect');
+                if (selectedOptions.includes(i)) {
+                    option.classList.add('selected');
+                }
+            });
+        }
+
+        function submitAnswer() {
+            if (selectedOptions.length === 0) return;
+            
+            isSubmitted = true;
+            
+            if (!answers[currentSection][currentQuestion]) {
+                answers[currentSection][currentQuestion] = {selected: [], submitted: false};
+            }
+            answers[currentSection][currentQuestion].submitted = true;
+            
+            const questionData = getCurrentQuestionData();
+            showFeedbackForMultipleResponse(questionData);
+            document.getElementById('nextBtn').disabled = false;
+            document.getElementById('submitBtn').disabled = true;
+            document.getElementById('cancelBtn').classList.remove('show');
+        }
+
+        function showFeedback(index, questionData) {
+            if (!questionData) questionData = getCurrentQuestionData();
+            
+            const feedback = document.getElementById('feedback');
+            const feedbackIcon = document.getElementById('feedbackIcon');
+            const feedbackText = document.getElementById('feedbackText');
+            const rationale = document.getElementById('rationale');
+            const rationaleText = document.getElementById('rationaleText');
+            
+            if (index === questionData.correct) {
+                feedback.className = 'feedback correct';
+                feedbackIcon.textContent = '✅';
+                feedbackText.textContent = 'Correct! Well done.';
+            } else {
+                feedback.className = 'feedback incorrect';
+                feedbackIcon.textContent = '❌';
+                const correctLetter = String.fromCharCode(65 + questionData.correct);
+                feedbackText.textContent = `Incorrect. Correct: ${correctLetter}`;
+            }
+            
+            feedback.style.display = 'flex';
+            rationaleText.textContent = questionData.rationale;
+            rationale.classList.add('show');
+        }
+
+        function showFeedbackForMultipleResponse(questionData) {
+            if (!questionData) questionData = getCurrentQuestionData();
+            
+            const feedback = document.getElementById('feedback');
+            const feedbackIcon = document.getElementById('feedbackIcon');
+            const feedbackText = document.getElementById('feedbackText');
+            const rationale = document.getElementById('rationale');
+            const rationaleText = document.getElementById('rationaleText');
+            
+            const allCorrectSelected = questionData.correct.every(c => selectedOptions.includes(c));
+            const noIncorrectSelected = selectedOptions.every(s => questionData.correct.includes(s));
+            
+            const options = document.querySelectorAll('.option');
+            options.forEach((option, i) => {
+                option.classList.remove('selected', 'correct', 'incorrect');
+                if (questionData.correct.includes(i)) {
+                    option.classList.add('correct');
+                }
+                if (selectedOptions.includes(i) && !questionData.correct.includes(i)) {
+                    option.classList.add('incorrect');
+                }
+            });
+            
+            if (allCorrectSelected && noIncorrectSelected) {
+                feedback.className = 'feedback correct';
+                feedbackIcon.textContent = '✅';
+                feedbackText.textContent = 'Perfect! All correct selected.';
+            } else if (allCorrectSelected && !noIncorrectSelected) {
+                feedback.className = 'feedback incorrect';
+                feedbackIcon.textContent = '⚠️';
+                feedbackText.textContent = 'Almost! All correct + some incorrect.';
+            } else if (!allCorrectSelected && noIncorrectSelected) {
+                feedback.className = 'feedback incorrect';
+                feedbackIcon.textContent = '⚠️';
+                feedbackText.textContent = 'Partially correct! Some correct, missed others.';
+            } else {
+                feedback.className = 'feedback incorrect';
+                feedbackIcon.textContent = '❌';
+                feedbackText.textContent = 'Incorrect. Missed correct & selected incorrect.';
+            }
+            
+            feedback.style.display = 'flex';
+            rationaleText.textContent = questionData.rationale;
+            rationale.classList.add('show');
+        }
+
+        function cancelSelection() {
+            const questionData = getCurrentQuestionData();
+            
+            if (isMultipleResponseQuestion()) {
+                selectedOptions = [];
+                isSubmitted = false;
+                
+                const options = document.querySelectorAll('.option');
+                options.forEach(option => {
+                    option.classList.remove('selected', 'correct', 'incorrect');
+                });
+                
+                if (answers[currentSection][currentQuestion]) {
+                    answers[currentSection][currentQuestion] = {selected: [], submitted: false};
+                }
+                
+                document.getElementById('nextBtn').disabled = true;
+                document.getElementById('submitBtn').disabled = true;
+                document.getElementById('feedback').style.display = 'none';
+                document.getElementById('rationale').classList.remove('show');
+                document.getElementById('cancelBtn').classList.remove('show');
+            } else if (isMatchingSection()) {
+                answers[currentSection][currentQuestion] = null;
+                selectedOption = null;
+                
+                document.querySelectorAll('.matching-option').forEach(option => {
+                    option.classList.remove('selected', 'correct', 'incorrect');
+                });
+                
+                document.getElementById('feedback').style.display = 'none';
+                document.getElementById('rationale').classList.remove('show');
+                document.getElementById('nextBtn').disabled = true;
+                document.getElementById('cancelBtn').classList.remove('show');
+            } else {
+                answers[currentSection][currentQuestion] = null;
+                selectedOption = null;
+                
+                const options = document.querySelectorAll('.option');
+                options.forEach(option => {
+                    option.classList.remove('selected', 'correct', 'incorrect');
+                });
+                
+                document.getElementById('feedback').style.display = 'none';
+                document.getElementById('rationale').classList.remove('show');
+                document.getElementById('nextBtn').disabled = true;
+                document.getElementById('cancelBtn').classList.remove('show');
+            }
+        }
+
+        function nextCard() {
+            const totalQuestions = getTotalQuestions();
+            
+            if (currentQuestion < totalQuestions - 1) {
+                currentQuestion++;
+                selectedOption = null;
+                selectedOptions = [];
+                isSubmitted = false;
+                loadQuestion();
+            } else {
+                let correctCount = 0;
+                let totalAnswered = 0;
+                
+                Object.keys(answers).forEach(section => {
+                    answers[section].forEach((answer, index) => {
+                        if (answer !== null && answer !== undefined) {
+                            totalAnswered++;
+                            const questionData = getQuestionData(section, index);
+                            
+                            if (Array.isArray(questionData?.correct)) {
+                                if (answer.submitted && Array.isArray(answer.selected)) {
+                                    const allCorrect = questionData.correct.every(c => answer.selected.includes(c));
+                                    const noIncorrect = answer.selected.every(s => questionData.correct.includes(s));
+                                    if (allCorrect && noIncorrect) correctCount++;
+                                }
+                            } else if (questionData?.isMatching || questionData?.section === 'matching') {
+                                if (answer === questionData.correct) correctCount++;
+                            } else {
+                                if (answer === questionData?.correct) correctCount++;
+                            }
+                        }
+                    });
+                });
+                
+                alert(`Quiz completed!\n\nAnswered: ${totalAnswered}\nCorrect: ${correctCount}\n\nClick OK to restart.`);
+                
+                currentSection = 'multiple-choice';
+                currentQuestion = 0;
+                selectedOption = null;
+                selectedOptions = [];
+                isSubmitted = false;
+                answers = {
+                    'multiple-choice': Array(sections['multiple-choice'].length).fill(null),
+                    'multiple-response': Array(sections['multiple-response'].length).fill({selected: [], submitted: false}),
+                    'matching': Array(sections['matching'].length).fill(null),
+                    'all': Array(sections['all'].length).fill(null)
+                };
+                
+                setSection('multiple-choice');
+            }
+        }
+
+        function previousCard() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                const storedAnswer = answers[currentSection][currentQuestion];
+                
+                if (isMultipleResponseQuestion()) {
+                    selectedOptions = storedAnswer?.selected || [];
+                    isSubmitted = storedAnswer?.submitted || false;
+                } else {
+                    selectedOption = storedAnswer;
+                }
+                
+                loadQuestion();
+            }
+        }
+
+        function getTotalQuestions() {
+            if (currentSection === 'all') {
+                return sections['all'].length;
+            } else {
+                return sections[currentSection].length;
+            }
+        }
+
+        function getQuestionData(section, index) {
+            if (section === 'all') {
+                return sections['all'][index];
+            } else {
+                return sections[section][index];
+            }
+        }
+
+        // Initialize
+        setSection('multiple-choice');
+        
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(event) {
+            if (event.key >= '1' && event.key <= '5') {
+                const index = parseInt(event.key) - 1;
+                const questionData = getCurrentQuestionData();
+                if (!isMatchingSection()) {
+                    selectOption(index, questionData);
+                }
+            } else if (event.key >= 'a' && event.key <= 'e') {
+                const index = event.key.charCodeAt(0) - 97;
+                const questionData = getCurrentQuestionData();
+                if (!isMatchingSection()) {
+                    selectOption(index, questionData);
+                }
+            } else if (event.key === 'Enter' && isMultipleResponseQuestion()) {
+                if (selectedOptions.length > 0 && !isSubmitted) {
+                    submitAnswer();
+                }
+            } else if (event.key === 'ArrowLeft') {
+                if (!document.getElementById('prevBtn').disabled) {
+                    previousCard();
+                }
+            } else if (event.key === 'ArrowRight') {
+                if (!document.getElementById('nextBtn').disabled) {
+                    nextCard();
+                }
+            } else if (event.key === ' ' || event.key === 'Spacebar') {
+                if (!document.getElementById('nextBtn').disabled && !isMultipleResponseQuestion()) {
+                    nextCard();
+                }
+            } else if (event.key === 'Escape') {
+                cancelSelection();
+            }
+        });
+    </script>
+</body>
+</html>
